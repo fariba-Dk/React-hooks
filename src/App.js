@@ -1,29 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
-import UseStateHook from './components/UseStateHook';
-import UseReducerHook from './components/UseReducerHook';
-import UseEffectHook from './components/UseEffectHook'
+import { useState, useEffect, useRef } from 'react'
+import Counter from './components/Counter'
+import Array from './components/Array'
+import UseRef from './components/UseRef'
+import UseEffect from './components/UseEffect'
 
+//hooks rules: no loop, condition ir nested
 function App() {
+
+  const [ name, setName ] = useState( { first: '', last: '' } )
+
   return (
     <>
       <div>
-         <UseEffectHook />
-      </div>
+        <div>
+          <form>
+            <h2 style={{color: 'green'}}>Your first name is: { name.first }</h2>
+            <input
+            style={{color:'blue'}}
+            type="text"
+            value={name.first}
+            onChange={ e => setName( { first: e.target.value}) } />
+            <h2 style={{color: 'green'}}>Your last name is: { name.last }</h2>
+            <input
+            style={{color:'purple'}}
+            type="text"
+            value={name.last}
+            onChange={ e => setName( { last: e.target.value}) } />
+          </form>
+        </div>
 
-      <div className="App">
-        <header className="App-header">
-      <div>
-        <UseReducerHook/>
-      </div>
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1>
-            Hooks
-          </h1>
-            <UseStateHook/>
-        </header>
-      </div>
+        <div>
+           <Counter/>
+        </div>
 
+        <div>
+           <Array/>
+        </div>
+
+        <div>
+          <UseRef />
+        </div>
+
+        <div>
+          <UseEffect />
+        </div>
+
+
+      </div>
     </>
   );
 }
