@@ -1,16 +1,22 @@
 import { useState, useEffect, useRef } from 'react'
 import Counter from './components/Counter'
+import UseState from './components/UseState'
 import Array from './components/Array'
 import UseRef from './components/UseRef'
 import UseEffect from './components/UseEffect'
-
+import UseEffExample from './components/UseEffExample'
+import Ternary from './components/Ternary'
 //hooks rules: no loop, condition ir nested
 function App() {
 
   const [ name, setName ] = useState( { first: '', last: '' } )
+  const age = 20
 
   return (
     <>
+      <div>
+           <UseState/>
+      </div>
       <div>
         <div>
           <form>
@@ -28,7 +34,13 @@ function App() {
             onChange={ e => setName( { last: e.target.value}) } />
           </form>
         </div>
+        <div>{age >= 20 ? <h1>HI you are over 20, so all good</h1> : <h1> Sorry you can go in</h1>}
+           <Ternary/>
+        </div>
 
+        <div>
+           <UseState/>
+        </div>
         <div>
            <Counter/>
         </div>
@@ -40,9 +52,11 @@ function App() {
         <div>
           <UseRef />
         </div>
-
-        <div>
+     <div>
           <UseEffect />
+        </div>
+        <div>
+          <UseEffExample />
         </div>
 
 
